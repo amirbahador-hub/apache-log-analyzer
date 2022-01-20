@@ -11,19 +11,26 @@ Link_Lookup=http://www.semicomplete.com/style2.css
 # awk -F\" '{print $2}' $LOG_File_Name    # request line (%r)
 
 # MOST user agent
-# awk -F\" '{print $6}' $LOG_File_Name | sort | uniq -c | sort -nr | head -n 10
+echo "---------------------------------------- MOST user agent -------------------------------------------------"
+awk -F\" '{print $6}' $LOG_File_Name | sort | uniq -c | sort -nr | head -n 10
 
 # Most ip count
-# awk '{print $1}' $LOG_File_Name | sort | uniq -c | sort -nr | head -n 10
+echo "---------------------------------------- MOST ip count -------------------------------------------------"
+awk '{print $1}' $LOG_File_Name | sort | uniq -c | sort -nr | head -n 10
 
 # Most  referer
-# awk -F\" '{print $4}' $LOG_File_Name | sort | uniq -c | sort -nr | head -n 11 | tail -n 10
+echo "---------------------------------------- MOST user referer -------------------------------------------------"
+awk -F\" '{print $4}' $LOG_File_Name | sort | uniq -c | sort -nr | head -n 11 | tail -n 10
 
 # Count a url repitition
-# grep -o $Link_Lookup $LOG_File_Name | wc -l
-
+echo "---------------------------------------- MOST url viewed -------------------------------------------------"
+echo $Link_Lookup
+grep -o $Link_Lookup $LOG_File_Name | wc -l
 
 # Most Viewed Browsers
+echo "---------------------------------------- MOST viewed browser -------------------------------------------------"
 awk '{logs[$(NF)]++} END {for (browser in logs) print browser, logs[browser]}' $LOG_File_Name 
+
 # Most Viewed os
+echo "---------------------------------------- MOST viewed os -------------------------------------------------"
 awk '{logs[$13]++} END {for (os in logs) print os, logs[os]}' $LOG_File_Name 
