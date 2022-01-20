@@ -4,4 +4,4 @@
 # ip address    - -  time stamp                  "Request"                             -"UserAgent"  
 LOG_File_Name=logs
 
-awk '{print}' $LOG_File_Name
+awk -F\" '{print $4}' $LOG_File_Name    # referer  
