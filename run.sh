@@ -13,4 +13,7 @@ LOG_File_Name=logs
 # awk -F\" '{print $6}' $LOG_File_Name | sort | uniq -c | sort -nr | head -n 10
 
 # Most ip count
-awk '{print $1}' $LOG_File_Name | sort | uniq -c | sort -nr | head -n 10
+# awk '{print $1}' $LOG_File_Name | sort | uniq -c | sort -nr | head -n 10
+
+# Most  referer
+awk -F\" '{print $4}' $LOG_File_Name | sort | uniq -c | sort -nr | head -n 11 | tail -n 10
