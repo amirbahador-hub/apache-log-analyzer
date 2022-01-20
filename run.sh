@@ -5,4 +5,5 @@
 LOG_File_Name=logs
 
 # awk -F\" '{print $4}' $LOG_File_Name    # referer  
-awk -F\" '{print $6}' $LOG_File_Name    # user agent
+# awk -F\" '{print $6}' $LOG_File_Name    # user agent
+awk '{print $1}' $LOG_File_Name           # ip address 
