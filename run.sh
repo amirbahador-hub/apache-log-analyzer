@@ -3,6 +3,7 @@
 # 66.249.73.135 - - [20/May/2015:21:05:00 +0000] "GET /?flav=atom HTTP/1.1" 200 32352 "-" "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
 # ip address    - -  time stamp                  "Request"                             -"UserAgent"  
 LOG_File_Name=logs
+Link_Lookup=http://www.semicomplete.com/style2.css
 
 # awk -F\" '{print $4}' $LOG_File_Name    # referer  
 # awk -F\" '{print $6}' $LOG_File_Name    # user agent
@@ -16,4 +17,9 @@ LOG_File_Name=logs
 # awk '{print $1}' $LOG_File_Name | sort | uniq -c | sort -nr | head -n 10
 
 # Most  referer
-awk -F\" '{print $4}' $LOG_File_Name | sort | uniq -c | sort -nr | head -n 11 | tail -n 10
+# awk -F\" '{print $4}' $LOG_File_Name | sort | uniq -c | sort -nr | head -n 11 | tail -n 10
+
+# Count a url repitition
+grep -o $Link_Lookup $LOG_File_Name | wc -l
+
+
